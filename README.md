@@ -259,7 +259,162 @@ ICombatVisitor --> LightWeapon : visits
 ICombatVisitor --> MagicWeapon : visits
 ```
 
-w folderze 
+w folderze Model/Combat/CombatSystem.cs
+
+#### Visitor 2
+```mermaid
+classDiagram
+direction TB
+
+class ICombatVisitor {
+    <<interface>>
+    +Attack(HeavyWeapon, Player, damage)
+    +Attack(LightWeapon, Player, damage)
+    +Attack(MagicWeapon, Player, damage)
+    +Defense(HeavyWeapon, Player, defense)
+    +Defense(LightWeapon, Player, defense)
+    +Defense(MagicWeapon, Player, defense)
+}
+
+class NormalAttackVisitor {
+    +Attack()
+    +Defense()
+}
+
+class StealthAttackVisitor {
+    +Attack()
+    +Defense()
+}
+
+class MagicAttackVisitor {
+    +Attack()
+    +Defense()
+}
+
+class Weapon {
+    <<abstract>>
+}
+
+class HeavyWeapon
+class LightWeapon
+class MagicWeapon
+
+class Player
+
+ICombatVisitor <|.. NormalAttackVisitor
+ICombatVisitor <|.. StealthAttackVisitor
+ICombatVisitor <|.. MagicAttackVisitor
+
+Weapon <|-- HeavyWeapon
+Weapon <|-- LightWeapon
+Weapon <|-- MagicWeapon
+
+Player --> ICombatVisitor : uses
+
+ICombatVisitor --> HeavyWeapon : visits
+ICombatVisitor --> LightWeapon : visits
+ICombatVisitor --> MagicWeapon : visits
+```
+
+
+
+
+#### Observer
+```mermaid
+classDiagram
+direction LR
+
+class IMonsterSpeciesSubject {
+    <<interface>>
+    +Subscribe(observer)
+    +Unsubscribe(observer)
+    +NotifySpeciesDeath(notice)
+}
+
+class IMonsterSpeciesObserver {
+    <<interface>>
+    +OnSpeciesDeath(notice)
+}
+
+class MonsterSpecies {
+    -observers
+    +Subscribe(observer)
+    +NotifySpeciesDeath(notice)
+}
+
+class Monster {
+    +OnSpeciesDeath(notice)
+}
+
+class IMonsterSpeciesReaction {
+    <<interface>>
+    +Apply(monster, notice)
+}
+
+class AggressiveSpeciesReaction {
+    +IncreaseAttack(5)
+}
+
+class CowardSpeciesReaction {
+    +LoseDefense()
+}
+
+IMonsterSpeciesSubject <|.. MonsterSpecies
+IMonsterSpeciesObserver <|.. Monster
+
+MonsterSpecies --> IMonsterSpeciesObserver : notifies
+Monster --> IMonsterSpeciesReaction : reacts with
+
+IMonsterSpeciesReaction <|.. AggressiveSpeciesReaction
+IMonsterSpeciesReaction <|.. CowardSpeciesReaction
+
+```
+/Model/Entities/Species
+
+
+#### Strategy
+
+```mermaid
+classDiagram
+direction TB
+
+class IMonsterMovementBehaviour {
+    <<interface>>
+    +TryGetMove(monster, state)
+}
+
+class RandomMovement {
+    +TryGetMove(monster, state)
+}
+
+class FollowSound {
+    +TryGetMove(monster, state)
+}
+
+class FleeSound {
+    +TryGetMove(monster, state)
+}
+
+class FollowPlayer {
+    +TryGetMove(monster, state)
+}
+
+class FleePlayer {
+    +TryGetMove(monster, state)
+}
+
+class MonsterMovementSystem {
+    +Update(state)
+}
+
+IMonsterMovementBehaviour <|.. RandomMovement
+IMonsterMovementBehaviour <|.. FollowSound
+IMonsterMovementBehaviour <|.. FleeSound
+IMonsterMovementBehaviour <|.. FollowPlayer
+IMonsterMovementBehaviour <|.. FleePlayer
+
+MonsterMovementSystem --> IMonsterMovementBehaviour : uses
+```
 
 
 
