@@ -2,6 +2,30 @@
 
 
 
+
+
+<details>
+<summary>Click to toggle contents of `code`</summary>
+```
+CODE!
+```
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #### Dekorator
 ```mermaid
 classDiagram
@@ -47,7 +71,10 @@ classDiagram
     WeaponDecorator <|-- LuckyEffect
 ```
 
+
+
 #### Chain of responsibility
+
 ```mermaid
 classDiagram
 direction LR
@@ -96,12 +123,9 @@ InventoryHandler --> LogHandler : next
 LogHandler --> DefaultHandler : next
 ```
 
-
-
 #### Builder
 
 ```mermaid
-
 classDiagram
 direction LR
 
@@ -128,12 +152,7 @@ IDungeonStep <|.. CentralChamberStep
 IDungeonStep <|.. RandomRoomsStep
 
 DungeonBuilder --> Board : builds
-
 ```
-
-
-
-
 
 #### Abstract Factory
 
@@ -185,11 +204,10 @@ DungeonThemeFactory ..> IDungeonStep : creates
 ForestThemeFactory ..> IDungeonStep : creates
 DungeonThemeFactory ..> Item : creates
 ForestThemeFactory ..> Item : creates
-
 ```
 
-
 #### Singleton
+
 ```mermaid
 classDiagram
 direction LR
@@ -209,12 +227,9 @@ class GameLogUser {
 
 GameLogUser --> GameLog : uses
 GameLog ..> GameLog : single instance
-
-
 ```
+
 w pliku Logging/GameLog.cs
-
-
 
 #### Visitor
 
@@ -262,6 +277,7 @@ ICombatVisitor --> MagicWeapon : visits
 w folderze Model/Combat/CombatSystem.cs
 
 #### Visitor 2
+
 ```mermaid
 classDiagram
 direction TB
@@ -316,10 +332,8 @@ ICombatVisitor --> LightWeapon : visits
 ICombatVisitor --> MagicWeapon : visits
 ```
 
-
-
-
 #### Observer
+
 ```mermaid
 classDiagram
 direction LR
@@ -367,10 +381,9 @@ Monster --> IMonsterSpeciesReaction : reacts with
 
 IMonsterSpeciesReaction <|.. AggressiveSpeciesReaction
 IMonsterSpeciesReaction <|.. CowardSpeciesReaction
-
 ```
-/Model/Entities/Species
 
+/Model/Entities/Species
 
 #### Strategy
 
@@ -415,21 +428,3 @@ IMonsterMovementBehaviour <|.. FleePlayer
 
 MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
