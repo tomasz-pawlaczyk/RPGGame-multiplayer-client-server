@@ -4,7 +4,7 @@
 
 
 <details>
-<summary>Decorator</summary>
+<summary> ##Decorator</summary>
 
 ### Dekorator
   
@@ -66,62 +66,62 @@ classDiagram
 
 
 <details>
-<summary>Chain of responsibility</summary>
+  <summary><strong>Chain of responsibility</strong></summary>
 
 
-#### Chain of responsibility
+  #### Chain of responsibility
 
-```mermaid
-classDiagram
-direction LR
+  ```mermaid
+  classDiagram
+  direction LR
 
-class InputHandler {
-    <<abstract>>
-    #next : InputHandler
-    +SetNext(handler)
-    +Handle(input)
-}
+  class InputHandler {
+      <<abstract>>
+      #next : InputHandler
+      +SetNext(handler)
+      +Handle(input)
+  }
 
-class MoveHandler {
-    +Handle(input)
-    -MovePlayer()
-}
+  class MoveHandler {
+      +Handle(input)
+      -MovePlayer()
+  }
 
-class CombatHandler {
-    +Handle(input)
-    -Attack()
-}
+  class CombatHandler {
+      +Handle(input)
+      -Attack()
+  }
 
-class InventoryHandler {
-    +Handle(input)
-    -PickItem()
-    -DropItem()
-}
+  class InventoryHandler {
+      +Handle(input)
+      -PickItem()
+      -DropItem()
+  }
 
-class LogHandler {
-    +Handle(input)
-    -ToggleLogView()
-}
+  class LogHandler {
+      +Handle(input)
+      -ToggleLogView()
+  }
 
-class DefaultHandler {
-    +Handle(input)
-}
+  class DefaultHandler {
+      +Handle(input)
+  }
 
-InputHandler <|-- MoveHandler
-InputHandler <|-- CombatHandler
-InputHandler <|-- InventoryHandler
-InputHandler <|-- LogHandler
-InputHandler <|-- DefaultHandler
+  InputHandler <|-- MoveHandler
+  InputHandler <|-- CombatHandler
+  InputHandler <|-- InventoryHandler
+  InputHandler <|-- LogHandler
+  InputHandler <|-- DefaultHandler
 
-MoveHandler --> CombatHandler : next
-CombatHandler --> InventoryHandler : next
-InventoryHandler --> LogHandler : next
-LogHandler --> DefaultHandler : next
-```
+  MoveHandler --> CombatHandler : next
+  CombatHandler --> InventoryHandler : next
+  InventoryHandler --> LogHandler : next
+  LogHandler --> DefaultHandler : next
+  ```
 </details>
   
 <details>
-<summary>Builder</summary>
+  <summary><h1>Builder</h1></summary>
   
   
 #### Builder
