@@ -3,21 +3,11 @@
 
 
 
-
-<details>
-<summary>Click to toggle contents of `code`</summary>
-```
-CODE!
-```
-</details>
-
-
-
-
 <details>
 <summary>Decorator</summary>
 
-#### Dekorator
+### Dekorator
+  
 
 ```mermaid
 classDiagram
@@ -75,51 +65,8 @@ classDiagram
 
 
 
-#### Dekorator
-```mermaid
-classDiagram
-    direction TB
-
-    class Weapon {
-        +Name
-        +Damage
-    }
-
-    class Sword {
-        +Damage
-    }
-
-    class Dagger {
-        +Damage
-    }
-
-    class Bow {
-        +Damage
-    }
-
-    class WeaponDecorator {
-        #Weapon inner
-    }
-
-    class StrongEffect {
-        +DamageBonus
-    }
-
-    class LuckyEffect {
-        +LuckBonus
-    }
-
-    Weapon <|-- Sword
-    Weapon <|-- Dagger
-    Weapon <|-- Bow
-
-    Weapon <|-- WeaponDecorator
-    WeaponDecorator o-- Weapon : wraps
-
-    WeaponDecorator <|-- StrongEffect
-    WeaponDecorator <|-- LuckyEffect
-```
-
+<details>
+<summary>Chain of responsibility</summary>
 
 
 #### Chain of responsibility
@@ -171,7 +118,12 @@ CombatHandler --> InventoryHandler : next
 InventoryHandler --> LogHandler : next
 LogHandler --> DefaultHandler : next
 ```
-
+</details>
+  
+<details>
+<summary>Builder</summary>
+  
+  
 #### Builder
 
 ```mermaid
@@ -202,6 +154,13 @@ IDungeonStep <|.. RandomRoomsStep
 
 DungeonBuilder --> Board : builds
 ```
+</details>
+  
+  
+
+
+<details>
+<summary>Abstract Factory</summary>
 
 #### Abstract Factory
 
@@ -254,7 +213,14 @@ ForestThemeFactory ..> IDungeonStep : creates
 DungeonThemeFactory ..> Item : creates
 ForestThemeFactory ..> Item : creates
 ```
+</details>
+  
+  
+  
+<details>
+<summary>Singleton</summary>
 
+  
 #### Singleton
 
 ```mermaid
@@ -279,6 +245,13 @@ GameLog ..> GameLog : single instance
 ```
 
 w pliku Logging/GameLog.cs
+</details>
+  
+  
+
+
+<details>
+<summary>Visitor I</summary>
 
 #### Visitor
 
@@ -324,8 +297,17 @@ ICombatVisitor --> MagicWeapon : visits
 ```
 
 w folderze Model/Combat/CombatSystem.cs
-
-#### Visitor 2
+</details>
+  
+  
+  
+  
+  
+  
+<details>
+<summary>Visitor II</summary>
+  
+#### Visitor
 
 ```mermaid
 classDiagram
@@ -380,7 +362,13 @@ ICombatVisitor --> HeavyWeapon : visits
 ICombatVisitor --> LightWeapon : visits
 ICombatVisitor --> MagicWeapon : visits
 ```
-
+</details>
+  
+  
+  
+  
+<details>
+<summary>Observer</summary>
 #### Observer
 
 ```mermaid
@@ -432,9 +420,17 @@ IMonsterSpeciesReaction <|.. AggressiveSpeciesReaction
 IMonsterSpeciesReaction <|.. CowardSpeciesReaction
 ```
 
-/Model/Entities/Species
-
-#### Strategy
+/Model/Entities/Species 
+</details>
+  
+  
+  
+  
+  
+<details>
+<summary>Startegy</summary>
+  
+### Strategy
 
 ```mermaid
 classDiagram
@@ -477,3 +473,4 @@ IMonsterMovementBehaviour <|.. FleePlayer
 
 MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 ```
+</details>
