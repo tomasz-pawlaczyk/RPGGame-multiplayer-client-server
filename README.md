@@ -14,7 +14,56 @@ CODE!
 
 
 
+<details>
+<summary>Decorator</summary>
 
+#### Dekorator
+
+```mermaid
+classDiagram
+    direction TB
+
+    class Weapon {
+        +Name
+        +Damage
+    }
+
+    class Sword {
+        +Damage
+    }
+
+    class Dagger {
+        +Damage
+    }
+
+    class Bow {
+        +Damage
+    }
+
+    class WeaponDecorator {
+        #Weapon inner
+    }
+
+    class StrongEffect {
+        +DamageBonus
+    }
+
+    class LuckyEffect {
+        +LuckBonus
+    }
+
+    Weapon <|-- Sword
+    Weapon <|-- Dagger
+    Weapon <|-- Bow
+
+    Weapon <|-- WeaponDecorator
+    WeaponDecorator o-- Weapon : wraps
+
+    WeaponDecorator <|-- StrongEffect
+    WeaponDecorator <|-- LuckyEffect
+```
+
+</details>
 
 
 
