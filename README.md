@@ -222,6 +222,12 @@ ForestThemeFactory ..> Item : creates
 
 `Model/DungeonBuilding/Themes/`
 
+**Theme comparison**
+<div align="center">
+  <img src="images/theme comparison.png" alt="Themes" width="800" style="border-radius: 0px;">
+</div>
+
+
 </details>
 
 <details>
