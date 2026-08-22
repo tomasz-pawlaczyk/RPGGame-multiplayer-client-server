@@ -1,9 +1,25 @@
-# Wzorce obiektowe
+# RPGGame multiplayer client-server
+
+A C# multiplayer RPG game where players explore different themed worlds, fight monsters and other players, collect items, and build their characters through weapons and abilities. The game uses TCP networking, JSON-based communication, multithreaded server-side processing, MVC architecture, and advanced object-oriented design patterns to keep the system modular and extensible.
+
+
+<div align="center">
+  <img src="images/main.png" alt="MVC" idth="800" style="border-radius: 10px;">
+</div>
+
+
+
+
+
+
+## Design Patterns
+
+The project uses advanced design patterns to achieve strong modularity and extensibility, applying each pattern to a specific architectural challenge.
 
 <details>
-<summary><h3>Builder</h3></summary>
+<summary><strong>Builder</strong></summary>
 
-`DungeonBuilder` is responsible for constructing the dungeon map step by step by storing and executing a sequence of generation steps on the `Board`. This separates individual room-generation strategies, such as `FixedRoomStep`, `CentralChamberStep`, and `RandomRoomsStep`, from the building process and allows different combinations of steps to create different dungeon layouts.
+Is responsible for constructing the dungeon map step by step by storing and executing a sequence of generation steps on the `Board`. This separates individual room-generation strategies, such as `FixedRoomStep`, `CentralChamberStep`, and `RandomRoomsStep`, from the building process and allows different combinations of steps to create different dungeon layouts.
 
 ```mermaid
 classDiagram
@@ -40,9 +56,9 @@ DungeonBuilder --> Board : builds
 </details>
 
 <details>
-<summary><h3>Decorator</h3></summary>
+<summary><strong>Decorator</strong></summary>
 
-`WeaponDecorator` adds effects to weapons dynamically without modifying their original classes. The weapon itself does not know that it is decorated, allowing effects such as `StrongEffect` and `LuckyEffect` to be combined flexibly while keeping weapons independent.
+Adds effects to weapons dynamically without modifying their original classes. The weapon itself does not know that it is decorated, allowing effects such as `StrongEffect` and `LuckyEffect` to be combined flexibly while keeping weapons independent.
 
 ```mermaid
 classDiagram
@@ -96,9 +112,7 @@ WeaponDecorator <|-- LuckyEffect
 <details>
 <summary><strong>Chain of responsibility</strong></summary>
 
-#### Chain of responsibility
-
-`Chain of Responsibility` handles keyboard input in the game by passing each pressed key through a chain of handlers. Each handler checks whether the key belongs to its responsibility, such as movement, combat, inventory or log view; if not, it passes the input to the next handler. This keeps keyboard handling separated into independent parts of the game.
+Handles keyboard input in the game by passing each pressed key through a chain of handlers. Each handler checks whether the key belongs to its responsibility, such as movement, combat, inventory or log view; if not, it passes the input to the next handler. This keeps keyboard handling separated into independent parts of the game.
 
 ```mermaid
 classDiagram
@@ -153,11 +167,9 @@ LogHandler --> DefaultHandler : next
 </details>
 
 <details>
-<summary><h3>Abstract Factory</h3></summary>
+<summary><strong>Abstract Factory</strong></summary>
 
-### Abstract Factory
-
-`Abstract Factory` allows the game to create complete dungeon themes such as **Dungeon, Forest and Bank** through the same factory interface. Each theme can provide its own map-generation steps, items and artifacts without duplicating the code responsible for creating and assembling the game world.
+Allows the game to create complete dungeon themes such as **Dungeon, Forest and Bank** through the same factory interface. Each theme can provide its own map-generation steps, items and artifacts without duplicating the code responsible for creating and assembling the game world.
 
 ```mermaid
 classDiagram
@@ -213,9 +225,9 @@ ForestThemeFactory ..> Item : creates
 </details>
 
 <details>
-<summary><h3>Visitor</h3></summary>
+<summary><strong>Visitor</strong></summary>
 
-`Visitor` is used in the combat system to calculate attack and defense differently depending on the weapon type and the selected combat style. The key feature is that **new operations can be added without modifying the weapon classes**: `NormalAttackVisitor`, `StealthAttackVisitor` and `MagicAttackVisitor` define how each weapon type behaves, while the weapons themselves remain unchanged.
+Is used in the combat system to calculate attack and defense differently depending on the weapon type and the selected combat style. The key feature is that **new operations can be added without modifying the weapon classes**: `NormalAttackVisitor`, `StealthAttackVisitor` and `MagicAttackVisitor` define how each weapon type behaves, while the weapons themselves remain unchanged.
 
 ```mermaid
 classDiagram
@@ -276,9 +288,9 @@ ICombatVisitor --> MagicWeapon : visits
 </details>
 
 <details>
-<summary><h3>Observer</h3></summary>
+<summary><strong>Observer</strong></summary>
 
-`Observer` is used in the game to react to the death of a monster belonging to a species. `MonsterSpecies` notifies all subscribed `Monster` objects when one of their members dies, and each monster reacts according to its assigned strategy — for example, `AggressiveSpeciesReaction` increases attack by 5, while `CowardSpeciesReaction` removes its defense. The key feature is that the subject does not need to know how observers react, so new reactions can be added without changing the notification mechanism.
+Is used in the game to react to the death of a monster belonging to a species. `MonsterSpecies` notifies all subscribed `Monster` objects when one of their members dies, and each monster reacts according to its assigned strategy — for example, `AggressiveSpeciesReaction` increases attack by 5, while `CowardSpeciesReaction` removes its defense. The key feature is that the subject does not need to know how observers react, so new reactions can be added without changing the notification mechanism.
 
 ```mermaid
 classDiagram
@@ -334,9 +346,9 @@ IMonsterSpeciesReaction <|.. CowardSpeciesReaction
 </details>
 
 <details>
-<summary><h3>Singleton</h3></summary>
+<summary><strong>Singleton</strong></summary>
 
-`Singleton` provides global access to logging from anywhere in the game while ensuring that only one `GameLog` instance exists. This means every part of the project writes to the same centralized log, keeping logging consistent across the entire application.
+Provides global access to logging from anywhere in the game while ensuring that only one `GameLog` instance exists. This means every part of the project writes to the same centralized log, keeping logging consistent across the entire application.
 
 ```mermaid
 classDiagram
@@ -364,9 +376,9 @@ GameLog ..> GameLog : single instance
 </details>
 
 <details>
-<summary><h3>Strategy</h3></summary>
+<summary><strong>Strategy</strong></summary>
 
-`Strategy` is used in the game to define different movement behaviours for monsters while keeping the `MonsterMovementSystem` independent from their specific logic. Depending on the assigned strategy, a monster can move randomly, follow or flee from sounds, or follow or flee from players. The key feature is that these behaviours are interchangeable, so the movement logic can be changed without modifying `MonsterMovementSystem`.
+Is used in the game to define different movement behaviours for monsters while keeping the `MonsterMovementSystem` independent from their specific logic. Depending on the assigned strategy, a monster can move randomly, follow or flee from sounds, or follow or flee from players. The key feature is that these behaviours are interchangeable, so the movement logic can be changed without modifying `MonsterMovementSystem`.
 
 ```mermaid
 classDiagram
@@ -419,6 +431,70 @@ MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 
 
 
+## MVC - Model View Controller
+
+The project follows the **Model-View-Controller (MVC)** architectural pattern to maintain a clear separation between game logic, user interaction and presentation. Combined with the client-server architecture, this creates a modular structure in which the server remains responsible for the authoritative game state, while the client handles input and presentation.
+
+
+
+![MVC](images/MVC.png)
+
+
+| Component      | Responsibility                                              |
+| -------------- | ----------------------------------------------------------- |
+| **Model**      | Contains game logic and authoritative state of the world. It manages players, items, combat, dungeon generation and state of the game |
+| **Controller** | Processes keyboard input and creates player commands        |
+| **View**       | Renders the game state received from the server             |
+
+
+
+
+### Why MVC?
+
+The separation makes the project easier to **maintain, extend and test**. Each part can evolve independently. This also makes it easier to add new gameplay systems, input handlers and visual components without affecting the rest of the code.
+
+
+
+## Code Structure
+
+```text
+RPGGame/
+├── Config/
+|
+├── Controller/
+│   ├── GameController.cs
+│   └── Input/
+|
+├── Model/
+│   ├── GameModel.cs
+│   ├── Combat/
+│   ├── DungeonBuilding/
+│   ├── Entities/
+│   ├── Items/
+│   ├── Logging/
+│   ├── PlayerInventory/
+│   ├── Snapshots/
+│   ├── State/
+│   ├── Stats/
+│   └── World/
+│
+├── Network/
+│   ├── Client/
+│   │   └── GameClient.cs
+│   ├── Server/
+│   │   └── GameServer.cs
+│   └── Messages/
+│
+├── View/
+│   ├── ConsoleRenderer.cs
+|   └── ...
+│
+└── Program.cs
+```
+
+
+<br><br><br><br>
+
 
 
 ---
@@ -429,64 +505,7 @@ MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 
 # SYFY
 
-# MVC - Model View Controller
-
-The project follows the **Model-View-Controller (MVC)** architectural pattern to maintain a clear separation between game logic, user interaction and presentation. Combined with the client-server architecture, this creates a modular structure in which the server remains responsible for the authoritative game state, while the client handles input and presentation.
-
-```mermaid
-flowchart LR
-
-Player[Player]
-
-subgraph Client
-    Controller[Controller]
-    View[View]
-end
-
-subgraph Server
-    Model[Game Model]
-end
-
-Player -->|keyboard input| Controller
-Controller -->|commands| Model
-
-Model -->|GameSnapshot| View
-View -->|renders| Player
-```
-
-
-
-#### MVC - Model View Controller
-
-The project uses the MVC architecture to clearly separate game logic, user input and presentation. The **Model** contains the authoritative game state and rules on the server, the **Controller** processes player input and converts it into commands, while the **View** renders game snapshots on the client. This separation keeps the codebase modular and makes individual parts easier to maintain, test and extend without affecting the rest of the application.
 
 
 
 
-### Separation of Responsibilities
-
-| Component      | Responsibility                                              |
-| -------------- | ----------------------------------------------------------- |
-| **Model**      | Stores the authoritative game state and executes game logic |
-| **Controller** | Processes keyboard input and creates player commands        |
-| **View**       | Renders the game state received from the server             |
-
-
-
-### Model
-
-The **Model** contains the core game logic and the authoritative state of the world. It manages players, monsters, items, combat, movement, dungeon generation and the current state of the game. The server owns this model, which means clients never directly modify the game state.
-
-### Controller
-
-The **Controller** is responsible for interpreting player input and converting keyboard actions into game commands. These commands are sent to the server, where they are validated and executed against the authoritative model.
-
-### View
-
-The **View** is responsible only for presentation. It receives the current `GameSnapshot` from the server and renders the map, player information, inventory, logs and other visual elements in the terminal.
-
-
-
-### Why MVC?
-
-The separation makes the project easier to **maintain, extend and test**. Individual components can evolve independently, while the server-client boundary ensures that the game state is centralized and synchronized between multiple players. This structure also makes the codebase easier to scale, because new gameplay systems, input handlers or visual components can be introduced without tightly coupling them to the existing implementation.
