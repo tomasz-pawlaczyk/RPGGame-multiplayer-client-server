@@ -1,3 +1,6 @@
+
+
+
 # RPGGame multiplayer client-server
 
 A C# multiplayer RPG game where players explore different themed worlds, fight monsters and other players, collect items, and build their characters through weapons and abilities. The game uses TCP networking, JSON-based communication, multithreaded server-side processing, MVC architecture, and advanced object-oriented design patterns to keep the system modular and extensible.
@@ -352,6 +355,15 @@ IMonsterSpeciesReaction <|.. CowardSpeciesReaction
        style="width: 100%; border-radius: 10px;">
 </video>
 
+<video
+  src="https://github.com/user-attachments/assets/44ce433c-aa9b-4249-9ad3-937fa331b6c4"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls>
+</video>
+
 </details>
 
 <details>
@@ -436,6 +448,15 @@ MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 
 <video src="images/followSound.mp4" autoplay muted loop playsinline controls
        style="width: 100%; border-radius: 10px;">
+</video>
+
+<video
+  src="https://github.com/user-attachments/assets/19033e50-bc2c-4abc-a289-93e12be4d98f"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls>
 </video>
 
 </details>
