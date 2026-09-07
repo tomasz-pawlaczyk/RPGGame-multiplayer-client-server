@@ -568,6 +568,7 @@ A ranged weapon that allows players to attack enemies from a distance.
 
 <video
   src="https://github.com/user-attachments/assets/a2863713-88f1-4505-b5e8-dd359e72c65a"
+  width="700"
   controls>
 </video>
 
@@ -577,6 +578,7 @@ A throwable explosive that detonates after a short countdown.
 
 <video
   src="https://github.com/user-attachments/assets/bff5ec79-3799-4fe4-9d83-5c35bc52b36f"
+  width="500"
   controls>
 </video>
 
