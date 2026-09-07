@@ -351,8 +351,13 @@ IMonsterSpeciesReaction <|.. CowardSpeciesReaction
 
 `/Model/Entities/Species` 
 
-<video src="images/species reaction.mp4" autoplay muted loop playsinline controls
-       style="width: 100%; border-radius: 10px;">
+<video
+  src="https://github.com/user-attachments/assets/44ce433c-aa9b-4249-9ad3-937fa331b6c4"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls>
 </video>
 
 <video
@@ -446,8 +451,17 @@ MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 `Model/Entities/Movement/`
 `Model/Entities/Movement/Behaviours/`
 
-<video src="images/followSound.mp4" autoplay muted loop playsinline controls
+<!-- <video src="images/followSound.mp4" autoplay muted loop playsinline controls
        style="width: 100%; border-radius: 10px;">
+</video> -->
+
+<video
+  src="https://github.com/user-attachments/assets/19033e50-bc2c-4abc-a289-93e12be4d98f"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls>
 </video>
 
 <video
@@ -463,7 +477,7 @@ MonsterMovementSystem --> IMonsterMovementBehaviour : uses
 
 
 
-
+---
 
 ## MVC - Model View Controller
 
@@ -486,6 +500,11 @@ The project follows the **Model-View-Controller (MVC)** architectural pattern to
 ### Why MVC?
 
 The separation makes the project easier to **maintain, extend and test**. Each part can evolve independently. This also makes it easier to add new gameplay systems, input handlers and visual components without affecting the rest of the code.
+
+---
+
+
+
 
 
 
@@ -526,6 +545,30 @@ RPGGame/
 └── Program.cs
 ```
 
+## Additional Features
+The project includes additional gameplay and presentation features that enhance the overall functionality and player experience.
+
+
+
+
+### Game Intro
+An animated terminal introduction displayed before the game starts.
+
+
+
+### Logging 
+A centralized system for recording important game events and actions.
+
+
+
+### Bow
+A ranged weapon that allows players to attack enemies from a distance.
+
+
+### Bomb
+A throwable explosive that detonates after a short countdown.
+
+
 
 <br><br><br><br>
 
@@ -538,7 +581,6 @@ RPGGame/
 ---
 
 # SYFY
-
 
 
 
