@@ -1,6 +1,7 @@
 
 
 
+
 # RPGGame multiplayer client-server
 
 A C# multiplayer RPG game where players explore different themed worlds, fight monsters and other players, collect items, and build their characters through weapons and abilities. The game uses TCP networking, JSON-based communication, multithreaded server-side processing, MVC architecture, and advanced object-oriented design patterns to keep the system modular and extensible.
@@ -565,8 +566,20 @@ A centralized system for recording important game events and actions.
 A ranged weapon that allows players to attack enemies from a distance.
 
 
+<video
+  src="https://github.com/user-attachments/assets/a2863713-88f1-4505-b5e8-dd359e72c65a"
+  controls>
+</video>
+
+
 ### Bomb
 A throwable explosive that detonates after a short countdown.
+
+<video
+  src="https://github.com/user-attachments/assets/bff5ec79-3799-4fe4-9d83-5c35bc52b36f"
+  controls>
+</video>
+
 
 
 
