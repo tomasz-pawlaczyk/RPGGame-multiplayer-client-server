@@ -562,25 +562,17 @@ A centralized system for recording important game events and actions.
 
 
 
-### Bow
-A ranged weapon that allows players to attack enemies from a distance.
+### Extra Weapons
+**Bow** - a ranged weapon that allows players to attack enemies from a distance. <br>
+**Bomb** - a throwable explosive that detonates after a short countdown.
 
 
 <video
-  src="https://github.com/user-attachments/assets/a2863713-88f1-4505-b5e8-dd359e72c65a"
-  width="700"
+  src="https://github.com/user-attachments/assets/9929fca3-15e4-42a0-9282-f6c605756554"
+  width="300"
   controls>
 </video>
 
-
-### Bomb
-A throwable explosive that detonates after a short countdown.
-
-<video
-  src="https://github.com/user-attachments/assets/bff5ec79-3799-4fe4-9d83-5c35bc52b36f"
-  width="500"
-  controls>
-</video>
 
 
 
