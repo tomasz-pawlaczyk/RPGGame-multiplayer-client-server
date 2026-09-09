@@ -373,7 +373,7 @@ IMonsterSpeciesReaction <|.. CowardSpeciesReaction
 </details>
 
 <details>
-<summary><strong>Singleton</strong></summary>
+<summary><strong>Singleton 🖼️</strong></summary>
 
 Provides global access to logging from anywhere in the game while ensuring that only one `GameLog` instance exists. This means every part of the project writes to the same centralized log, keeping logging consistent across the entire application.
 
