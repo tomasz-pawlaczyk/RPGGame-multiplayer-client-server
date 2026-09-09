@@ -398,6 +398,10 @@ GameLogUser --> GameLog : uses
 GameLog ..> GameLog : single instance
 ```
 
+<br>
+<img src="images/logs.png" alt="MVC" width="70%">
+<br>
+
 `Model/Logging/GameLog.cs`
 
 </details>
@@ -550,18 +554,6 @@ RPGGame/
 The project includes additional gameplay and presentation features that enhance the overall functionality and player experience.
 
 
-
-
-### Game Intro
-An animated terminal introduction displayed before the game starts.
-
-
-
-### Logging 
-A centralized system for recording important game events and actions.
-
-
-
 ### Extra Weapons
 **Bow** - a ranged weapon that allows players to attack enemies from a distance. <br>
 **Bomb** - a throwable explosive that detonates after a short countdown.
@@ -569,9 +561,15 @@ A centralized system for recording important game events and actions.
 
 <video
   src="https://github.com/user-attachments/assets/9929fca3-15e4-42a0-9282-f6c605756554"
-  width="300"
   controls>
 </video>
+
+### Game Intro
+An animated terminal introduction displayed before the game starts.
+<video
+  src="https://github.com/user-attachments/assets/0b6fc31d-16f5-44ea-be4d-f1527f8dc1ca">
+</video>
+
 
 
 
