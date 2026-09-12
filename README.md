@@ -299,7 +299,7 @@ ICombatVisitor --> MagicWeapon : visits
 <details>
 <summary><strong>Observer 🖼️</strong></summary>
 
-Is used in the game to react to the death of a monster belonging to a species. `MonsterSpecies` notifies all subscribed `Monster` objects when one of their members dies, and each monster reacts according to its assigned strategy — for example, `AggressiveSpeciesReaction` increases attack by 5, while `CowardSpeciesReaction` removes its defense. The key feature is that the subject does not need to know how observers react, so new reactions can be added without changing the notification mechanism.
+Is used in the game to react to the death of a monster belonging to a species. `MonsterSpecies` notifies all subscribed `Monster` objects when one of their members dies, and each monster reacts according to its assigned strategy - for example, `AggressiveSpeciesReaction` increases attack by 5, while `CowardSpeciesReaction` removes its defense. The key feature is that the subject does not need to know how observers react, so new reactions can be added without changing the notification mechanism.
 
 ```mermaid
 classDiagram
@@ -509,9 +509,78 @@ The separation makes the project easier to **maintain, extend and test**. Each p
 ---
 
 
+## Multithreading & Synchronization
+
+The project uses **multithreading to separate network communication, player input and game simulation**, allowing multiple clients to operate simultaneously without blocking each other.
+
+### Server - `N + 3` tasks
+
+* **1× Accept loop** - accepts new client connections.
+* **1× Command loop** - processes commands from the shared `ConcurrentQueue`.
+* **1× World tick loop** - periodically updates the game world and monster movement.
+* **N× Client handlers** - one `HandleClient` task for each connected player, responsible for receiving their messages.  
+
+```text
+Accept
+   │
+   ├── HandleClient #1 ─┐
+   ├── HandleClient #2 ─┤
+   ├── HandleClient #N ─┤
+   │                    ▼
+   │              ConcurrentQueue
+   │                    │
+   ├────────── Command Processing
+   │                    │
+   └──────────── World Tick
+                        │
+                     GameModel
+```
+
+### Client - 3 tasks
+
+* **Main task** - controls the main client loop.
+* **ReceiveSnapshots** - continuously receives game snapshots from the server.
+* **SendCommands** - reads keyboard input and sends commands to the server. 
+
+### Synchronization
+
+* **`ConcurrentQueue`** - safely transfers commands from multiple client handlers to the command processor.
+* **`modelLock`** - prevents simultaneous modification of the game model. 
+* **`clientsLock`** - protects the shared collection of client connections. 
+
+The important design principle is that **network tasks receive data, while game-state changes are performed in controlled server loops**, preventing race conditions and inconsistent game state.
+
+---
 
 
+## Server – Operation and Responsibilities
 
+The server is responsible for managing the multiplayer session and maintaining the authoritative game state. It handles player connections, names and states, controls the game flow and synchronizes clients.
+
+Its main responsibilities include:
+
+* **Player Management** - Connecting players, assigning names and monitoring their current state.
+* **Game Control** - Managing the lobby, introduction, game start, game over and returning players to the lobby.
+* **Theme generation** - Selecting and generating different game themes and managing their game elements.
+* **Player Monitoring** - Tracking living and dead players and detecting when a round has ended.
+* **Ranking** - Recording and displaying player results.
+* **Client Synchronization** - Sending regular `GameSnapshot` updates to all connected clients.
+* **Server Console** - Providing controls and a live overview of the current session and players.
+
+All game logic is executed on the server, making it the **authoritative source of the game state**.
+
+![Server](images/server.png)
+
+
+---
+
+
+## TCP & JSON Communication
+
+The client and server communicate using TCP sockets with JSON-serialized messages. Clients send player commands to the server, while the server processes them and periodically sends updated GameSnapshot data back to the clients. This provides structured and synchronized communication between all players.
+
+
+---
 
 ## Code Structure
 
@@ -574,18 +643,7 @@ An animated terminal introduction displayed before the game starts.
 
 
 
-
-<br><br><br><br>
-
-
-
----
-
----
-
----
-
-# SYFY
+<br><br>
 
 
 
